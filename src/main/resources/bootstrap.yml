@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: savior-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 118.190.97.125:8848
+      discovery:
+        server-addr: 118.190.97.125:8848
