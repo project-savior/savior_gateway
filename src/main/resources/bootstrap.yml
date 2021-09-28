@@ -5,5 +5,23 @@ spring:
     nacos:
       config:
         server-addr: 118.190.97.125:8848
+        file-extension: yaml
+        namespace: be4e8cf7-fa50-47e9-be6c-801a13f81653
+        group: SAVIOR_GROUP
       discovery:
         server-addr: 118.190.97.125:8848
+        namespace: be4e8cf7-fa50-47e9-be6c-801a13f81653
+        group: SAVIOR_GROUP
+    gateway:
+      discovery:
+        #启用探测器，从nacos获取服务信息
+        locator:
+          enabled: true
+      routes:
+        - id: savior_user
+          uri: lb://savior-user
+          order: 1
+          predicates:
+            - Path=/savior_user/**
+          filters:
+            - StripPrefix=1
