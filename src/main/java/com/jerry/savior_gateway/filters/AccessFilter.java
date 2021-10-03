@@ -103,7 +103,6 @@ public class AccessFilter implements GlobalFilter {
     }
 
     private Mono<Void> getVoidMono(ServerHttpResponse response, IResponseEnum responseEnum) {
-        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
         Integer code = responseEnum.getCode();
         String message = responseEnum.getMessage();
         CommonResponse<Void> commonResponse = CommonResponse
@@ -112,6 +111,7 @@ public class AccessFilter implements GlobalFilter {
     }
 
     private Mono<Void> getVoidMono(ServerHttpResponse response, CommonResponse<?> commonResponse) {
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
         DataBuffer dataBuffer = response
                 .bufferFactory()
                 .wrap(objectMapperHelper
