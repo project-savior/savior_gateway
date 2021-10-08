@@ -1,7 +1,5 @@
 package com.jerry.savior_gateway.config;
 
-import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayFlowRule;
-import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayRuleManager;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
@@ -16,11 +14,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.result.view.ViewResolver;
 
-import javax.annotation.PostConstruct;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author 22454
@@ -50,14 +45,14 @@ public class GatewayConfig {
         return new SentinelGatewayFilter();
     }
 
-    @PostConstruct
-    private void initRule() {
-        Set<GatewayFlowRule> rules = new HashSet<>();
-        rules.add(new GatewayFlowRule("user_service_route")
-                .setCount(1)
-                .setIntervalSec(1));
-        GatewayRuleManager.loadRules(rules);
-    }
+//    @PostConstruct
+//    private void initRule() {
+//        Set<GatewayFlowRule> rules = new HashSet<>();
+//        rules.add(new GatewayFlowRule("user_service_route")
+//                .setCount(1)
+//                .setIntervalSec(1));
+//        GatewayRuleManager.loadRules(rules);
+//    }
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {

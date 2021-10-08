@@ -25,3 +25,9 @@ spring:
             - Path=/savior_user/**
           filters:
             - StripPrefix=1
+        - id: savior_oauth
+          uri: lb://savior-oauth
+          predicates:
+            - Path=/savior_oauth/**
+          filters:
+            - StripPrefix=1
