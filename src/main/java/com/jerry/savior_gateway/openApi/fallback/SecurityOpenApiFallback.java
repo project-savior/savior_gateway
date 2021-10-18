@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityOpenApiFallback implements SecurityOpenApi {
     @Override
-    public CommonResponse<Void> authentication(String token) {
+    public CommonResponse<Void> authentication(String auth, String token) {
         log.error("调用Oauth服务进行鉴权失败，找不到服务Provider");
         throw new BusinessException(StandardResponse.ERROR);
     }

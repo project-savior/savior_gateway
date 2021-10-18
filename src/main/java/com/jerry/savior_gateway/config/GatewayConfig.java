@@ -1,7 +1,5 @@
 package com.jerry.savior_gateway.config;
 
-import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
-import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -20,42 +18,42 @@ import java.util.List;
 /**
  * @author 22454
  */
-@RefreshScope
-@Configuration
+//@RefreshScope
+//@Configuration
 public class GatewayConfig {
-    private final List<ViewResolver> viewResolvers;
-    private final ServerCodecConfigurer serverCodecConfigurer;
-
-    public GatewayConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
-                         ServerCodecConfigurer serverCodecConfigurer) {
-        this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
-        this.serverCodecConfigurer = serverCodecConfigurer;
-    }
-
-    @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
-        // Register the block exception handler for Spring Cloud Gateway.
-        return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
-    }
-
-    @Bean
-    @Order(-1)
-    public GlobalFilter sentinelGatewayFilter() {
-        return new SentinelGatewayFilter();
-    }
-
-//    @PostConstruct
-//    private void initRule() {
-//        Set<GatewayFlowRule> rules = new HashSet<>();
-//        rules.add(new GatewayFlowRule("user_service_route")
-//                .setCount(1)
-//                .setIntervalSec(1));
-//        GatewayRuleManager.loadRules(rules);
+//    private final List<ViewResolver> viewResolvers;
+//    private final ServerCodecConfigurer serverCodecConfigurer;
+//
+//    public GatewayConfig(ObjectProvider<List<ViewResolver>> viewResolversProvider,
+//                         ServerCodecConfigurer serverCodecConfigurer) {
+//        this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
+//        this.serverCodecConfigurer = serverCodecConfigurer;
 //    }
-
-    @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-        return null;
-    }
+//
+//    @Bean
+//    @Order(Ordered.HIGHEST_PRECEDENCE)
+//    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
+//        // Register the block exception handler for Spring Cloud Gateway.
+//        return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
+//    }
+//
+//    @Bean
+//    @Order(-1)
+//    public GlobalFilter sentinelGatewayFilter() {
+//        return new SentinelGatewayFilter();
+//    }
+//
+////    @PostConstruct
+////    private void initRule() {
+////        Set<GatewayFlowRule> rules = new HashSet<>();
+////        rules.add(new GatewayFlowRule("user_service_route")
+////                .setCount(1)
+////                .setIntervalSec(1));
+////        GatewayRuleManager.loadRules(rules);
+////    }
+//
+//    @Bean
+//    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+//        return null;
+//    }
 }

@@ -86,7 +86,7 @@ public class AccessFilter implements GlobalFilter {
                 return getVoidMono(response, EnumGatewayException.UNAUTHORIZED);
             }
             // 鉴权
-            CommonResponse<Void> authentication = securityOpenApi.authentication(token);
+            CommonResponse<Void> authentication = securityOpenApi.authentication(token, token);
             // 如果鉴权失败，返回鉴权信息
             if (!authentication.isSuccess()) {
                 return getVoidMono(response, authentication);

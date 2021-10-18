@@ -15,6 +15,7 @@ public class UnCheckedApiConfig {
     private final List<String> uncheckedApis = new ArrayList<String>() {
         {
             add("/login/*");
+            add("/code/*");
         }
     };
 
