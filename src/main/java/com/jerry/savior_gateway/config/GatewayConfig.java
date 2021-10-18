@@ -20,7 +20,7 @@ import java.util.List;
  */
 //@RefreshScope
 //@Configuration
-//public class GatewayConfig {
+public class GatewayConfig {
 //    private final List<ViewResolver> viewResolvers;
 //    private final ServerCodecConfigurer serverCodecConfigurer;
 //
@@ -56,4 +56,4 @@ import java.util.List;
 //    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 //        return null;
 //    }
-//}
+}

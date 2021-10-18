@@ -31,3 +31,4 @@ spring:
             - Path=/savior_oauth/**
           filters:
             - StripPrefix=1
+            - PreserveHostHeader
